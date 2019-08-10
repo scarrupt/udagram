@@ -1,6 +1,24 @@
 version: "3"
 
+volumes:
+  db-data:
+
 services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: $POSTGRESS_USERNAME
+      POSTGRES_PASSWORD: $POSTGRESS_PASSWORD
+    ports:
+      - 5432:5432
+    volumes:
+      - "db-data:/var/lib/postgresql/data"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U udagram"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
   reverseproxy:
       image: stevecarrupt/reverseproxy
       ports:
@@ -21,6 +39,8 @@ services:
       AWS_BUCKET: $AWS_BUCKET
       JWT_SECRET: $JWT_SECRET
       URL: "http://localhost:8100"
+    depends_on:
+      - db
   backend-feed:
     image: stevecarrupt/udagram-api-feed
     volumes:
@@ -35,6 +55,8 @@ services:
       AWS_BUCKET: $AWS_BUCKET
       JWT_SECRET: $JWT_SECRET
       URL: "http://localhost:8100"
+    depends_on:
+      - db
   frontend:
     image: stevecarrupt/udagram-frontend:local
     ports:
