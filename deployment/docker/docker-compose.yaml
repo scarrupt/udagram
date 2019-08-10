@@ -20,7 +20,7 @@ services:
       timeout: 5s
       retries: 5
   reverseproxy:
-      image: stevecarrupt/reverseproxy
+      image: stevecarrupt/udagram-reverseproxy
       ports:
           - 8080:8080
       restart: always
