@@ -12,7 +12,7 @@ spec:
         service: backend-feed
     spec:
       containers:
-      - image: stevecarrupt/udacity-api-feed
+      - image: stevecarrupt/udagram-api-feed
         name: backend-feed
         imagePullPolicy: Always  
         resources:
