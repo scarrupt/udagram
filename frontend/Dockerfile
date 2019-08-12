@@ -1,5 +1,7 @@
 ## Build
 FROM beevelop/ionic AS ionic
+ARG BUILD_ENV
+
 # Create app directory
 WORKDIR /usr/src/app
 # Install app dependencies
@@ -9,10 +11,12 @@ COPY package*.json ./
 RUN npm ci
 # Bundle app source
 COPY . .
-RUN ionic build
+RUN if [ "$BUILD_ENV" = "development" ]; \
+	then ionic build;  \
+	else ionic build --prod; \
+	fi
 
 ## Run 
 FROM nginx:alpine
 #COPY www /usr/share/nginx/html
 COPY --from=ionic  /usr/src/app/www /usr/share/nginx/html
-

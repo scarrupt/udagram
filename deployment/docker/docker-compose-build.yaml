@@ -14,5 +14,7 @@ services:
     image: stevecarrupt/udagram-api-feed
   frontend:
     build:
-      context: ../../frontend  
+      context: ../../frontend
+      args:
+        - BUILD_ENV=development
     image: stevecarrupt/udagram-frontend:local
