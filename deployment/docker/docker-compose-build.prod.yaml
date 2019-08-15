@@ -1,0 +1,20 @@
+version: "3"
+services:
+  reverseproxy:
+    build:
+      context: .
+    image: stevecarrupt/udagram-reverseproxy
+  backend_user:
+    build:
+      context: ../../api-user
+    image: stevecarrupt/udagram-api-user
+  backend_feed:
+    build:
+      context: ../../api-feed  
+    image: stevecarrupt/udagram-api-feed
+  frontend:
+    build:
+      context: ../../frontend  
+      args:
+        - BUILD_ENV=production
+    image: stevecarrupt/udagram-frontend

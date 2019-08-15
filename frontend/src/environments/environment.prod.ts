@@ -5,7 +5,7 @@
 export const environment = {
   production: true,
   appName: 'Udagram',
-  apiHost: process.env.API_URL
+  apiHost: 'http://${REVERSE_PROXY_EXTERNAL}:8080/api/v0'
 };
 
 /*
