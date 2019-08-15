@@ -5,10 +5,10 @@ metadata:
     service: reverseproxy
   name: reverseproxy
 spec:
+  type: LoadBalancer    
   ports:
   - name: "8080"
     port: 8080
     targetPort: 8080
   selector:
     service: reverseproxy
-#  type: LoadBalancer    

@@ -5,10 +5,10 @@ metadata:
     service: frontend
   name: frontend
 spec:
+  type: LoadBalancer
   ports:
   - name: "8100"
     port: 8100
     targetPort: 80
   selector:
-    service: frontend
-#  type: LoadBalancer    
+    service: frontend    

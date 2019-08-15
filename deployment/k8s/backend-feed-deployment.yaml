@@ -45,8 +45,8 @@ spec:
               key: AWS_REGION
         - name: JWT_SECRET
           valueFrom:
-            configMapKeyRef:
-              name: env-config
+            secretKeyRef:
+              name: env-secret
               key: JWT_SECRET
         - name: POSTGRESS_DB
           valueFrom:
