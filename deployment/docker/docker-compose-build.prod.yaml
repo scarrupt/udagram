@@ -17,4 +17,4 @@ services:
       context: ../../frontend  
       args:
         - BUILD_ENV=production
-    image: stevecarrupt/udagram-frontend
+    image: stevecarrupt/udagram-frontend:V2

@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     service: frontend
-  name: frontend
+  name: frontend-canary
 spec:
   replicas: 1
   template:
@@ -13,7 +13,7 @@ spec:
         api: external        
     spec:
       containers:
-      - image: stevecarrupt/udagram-frontend
+      - image: stevecarrupt/udagram-frontend:V2
         name: frontend
         imagePullPolicy: Always          
         ports:
