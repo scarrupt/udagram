@@ -1,0 +1,7 @@
+apiVersion: kubeone.io/v1alpha1
+kind: KubeOneCluster
+name: udagram
+versions:
+  kubernetes: 1.14.1
+cloudProvider:
+  name: aws

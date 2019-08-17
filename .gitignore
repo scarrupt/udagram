@@ -1,2 +1,8 @@
 .vscode/
 .DS_Store
+.terraform/
+terraform.tfstate*
+terraform.tfvars
+tf.json
+udagram-kubeconfig
+udagram.tar.gz
