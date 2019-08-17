@@ -5,7 +5,7 @@ metadata:
     service: backend-feed
   name: backend-feed
 spec:
-  replicas: 3
+  replicas: 1
   template:
     metadata:
       labels:

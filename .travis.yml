@@ -16,4 +16,14 @@ before_install:
   - sudo mv ./kubectl /usr/local/bin/kubectl
 
 install:
-  - docker-compose -f deployment/docker/docker-compose-build.yaml build --parallel 
+  - docker-compose -f deployment/docker/docker-compose-build.prod.yaml build --parallel
+
+deploy:
+  - provider: script
+    script: bash deployment/docker/publish.sh
+    on:
+      branch: master
+  - provider: script
+    script: bash deployment/k8s/deploy.sh
+    on:
+      branch: master
